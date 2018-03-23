@@ -1,0 +1,104 @@
+body {
+	font-family:Calibri;
+}
+#antet {
+	width:100%;
+	height:40px;
+	background-color:#333333;
+}
+
+#logo {
+	width:300px;
+	height:40px;
+	line-height:40px;
+	font-size:22px;
+	text-align:center;
+	font-weight:bold;
+	float:left;
+}
+#logo .enter {
+	color:#FFFFFF;
+}
+
+#logo .price {
+	color:#009900;
+}
+
+#navigare {
+	color:#FFFFFF;
+	font-weight:bold;
+	line-height:40px;
+}
+#meniu {
+	height:35px;
+	line-height:30px;
+	background-color: #6699FF;	
+}
+
+#meniu ul
+	{
+	list-style:none;
+	display:inline;
+	margin-top:5px;
+	padding-top:5px;
+	}
+#meniu ul li
+	{
+	height: 35px;
+	border:1px solid #000000;
+	border-bottom:0px;
+	border-top:0px;
+	float:left;
+	margin-left: 10px;
+	padding:0px 5px 0px 5px;
+	background-color:#333333;	
+	color:#FFFFFF;
+	}
+
+#meniu ul li:hover
+	{
+	height: 35px;
+	border:1px solid #000000;
+	border-bottom:0px;
+	float:left;
+	margin-left: 10px;
+	background-color:#FAFAFA;
+	}	
+
+#meniu ul li.selected
+	{
+	height: 34px;
+	border:1px solid #000000;
+	border-bottom:0px;
+	float:left;
+	margin-left: 10px;
+	background-color:#FAFAFA;
+	}		
+
+#meniu li.selected a {color:#000000;}
+
+#meniu a {
+	text-decoration:none;
+	color:#FFFFFF;
+	font-weight:bold;
+	display:block;
+	}
+	
+#meniu a:hover {
+	text-decoration:none;
+	color:#009900;
+	font-weight:bold;
+	display:block;
+	}
+
+#meniu a:visited {
+	text-decoration:none;
+	font-weight:bold;
+	display:block;
+	}
+
+#sub-meniu {
+	height:5px;
+	background-color:#FAFAFA;
+	border-bottom:1px #000000 solid;
+}

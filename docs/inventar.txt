@@ -1,0 +1,69 @@
+inventar
+
+- inventar_id
+- data_inventar
+- gestiune_id
+- numar_doc - se incrementeaza automat pt fiecare gestiune
+- utilizator_id
+- salvat - un inventar poate ramane in lucru pana la salvare (la salvare se modifica stocurile)
+
+inventar_continut
+
+inventar_continut_id
+inventar_id
+produs_id
+stoc_scriptic
+stoc_faptic
+
+inventar_continut_iesiri
+- ca totate tabelele de iesiri
+
+
+Lista
+
+- afisezi lista de inventare
+
+
+Adaugare
+
+- introduci data, -> salveaza antet
+
+Salvare antet
+
+- iti genereaza in tabela inventar antetul
+
+- in inventar continut iti introduce stocurile de pe fiecare produs pe gestiunea pe care lucrezi
+
+
+insert into inventar (inventar_id, produs_id, stoc_scriptic, stoc_faptic) (
+select '$inventar_id' as inventar_id, produs_id, stoc as stoc_scriptic, stoc as stoc_faptic
+from stocuri where gestiune_id = $gestiune_id
+)
+
+dupa salvare poti sa-i dai optiunea sa-si printeze o lista cu articole
+cu denumire, unitate masura, stoc_scriptic si celula goala pt stoc_faptic pe care sa si-o completeze cand face inventarul
+
+
+Editarea componentelor
+
+- afisezi lista pe pagini cu inventar continut
+
+inventar_continut_id |PRODUS | UM 	| STOC_SCRIPTIC | STOC_FAPTIC
+                     |nume   | buc    | 10		| [ 10 ] - input_stoc_faptic
+
+pe   input_stoc_faptic la onChange apelezi o functie salveazaInventarContinut($inventar_continut_id, $(this).val());
+cu care modifici cantitatea din stoc_faptic
+
+
+
+Inchidere inventar
+
+cand salvezi inventarul
+unde stoc_scriptic == stoc_faptic -> nimic
+     stoc_scriptic > stoc_faptic  -> iesirie pe stoc_faptic - stoc_scriptic
+     stoc_scriptic < stoc_faptic -> intrare in loturi cu tip_doc "inventar"
+
+
+89.43.159.254
+dell power edge r610 professional
+		

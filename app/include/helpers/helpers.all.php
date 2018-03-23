@@ -1,0 +1,15 @@
+<?php
+require_once("html.class.php");
+require_once("form.class.php");
+require_once("table.class.php");
+//require_once("image.class.php");
+//require_once("upload.class.php");
+//require_once("window.class.php");
+require_once("functii.php");
+//require_once("contact.class.php");
+//require_once("class.phpmailer.php");
+require_once("get.time.diff.php");
+require_once("jquery.dialog.php");
+require_once("toolbar.php");
+require_once("menu.php");
+?>

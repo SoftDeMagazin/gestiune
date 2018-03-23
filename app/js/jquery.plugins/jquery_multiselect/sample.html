@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="keywords" content="design, css, rss, ajax, xml, design, usability, information architecture, flash, ria" />
+		<meta name="description" content="" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<title>arc90 lab | tools: jQuery MultiSelect</title>
+		<style type="text/css">
+			@import "http://lab.arc90.com/tools/c/css/tool_global.css";	/* Style for this page */
+            @import "style.css";       
+        </style>
+        
+        <!--[if lt IE 7]>
+        <style type="text/css">
+        /* Overrides for IE */        
+        .multiSelect div.title {
+            position: absolute;
+            z-index: 104;
+            width:100%;   /* Fix for IE. */
+        }      
+        
+        </style>
+        <![endif]-->
+        <!--[if lt IE 6]>
+        <style type="text/css">
+        .multiSelect div.title
+        {
+            height: 20px; /* Fix for IE. */
+        }
+        </style>
+        <![endif]-->
+		
+        <script language="javascript" type="text/javascript" src="jquery-latest.js"></script>
+    	<script language="javascript" type="text/javascript" src="arc90_multiselect.js"></script>
+		<script language="javascript" type="text/javascript">
+		$(function() {
+            $('#basicmultiselect').multiSelect({select_all_min: 3});
+            $('#lang').multiSelect({
+                                select_all_min: 3,
+                                no_selection: "Please select a few items!",
+                                selected_text: " clicked"
+                               });
+            $('#methods').multiSelect();
+		});
+		</script>
+	</head>
+	<body>
+		<h5><a href="http://lab.arc90.com/">Lab</a> / <a href="http://lab.arc90.com/tools/">Tools</a> / <a href="http://lab.arc90.com/2007/07/multiselect.php">jQuery MultiSelect</a></h5>
+		<div id="container">
+		
+		<h1>jQuery MultiSelect</h1>		
+		<form action="#" method="get" name="form" id="form">
+            
+            
+			<div class="examples">
+				<label class="examples">First example of jQuery MultiSelect</label>
+				<select id="lang" name="lang" class="arc90_multiselect" multiple="multiple" title="Languages">
+					<option value="fr">French</option>
+					<option value="en" selected="true">English</option>
+					<option value="sp">Spanish</option>
+					<option value="jp" selected="true">Japanese</option>
+				</select>
+			</div>
+            
+
+			<div class="examples">
+				<label class="examples">jQuery MultiSelect allows works with multiple instances</label>
+				<select id="basicmultiselect" name="basicmultiselect" class="arc90_multiselect" multiple="multiple" title="Colours">
+					<option value="#ff0">red</option>
+					<option value="#0f0">green</option>
+					<option value="#ff0" selected="selected">orange</option>
+					<option value="#00f">blue</option>
+					<option value="#f0f">purple</option>
+				</select>
+			</div>
+
+			<div class="examples">
+				<label class="examples">Example of basic HTML select (causes layering issues in IE)</label>
+				<select id="basic" name="basic" title="Music Classifications">
+					<option value="goth">Goth</option>
+
+					<option value="industrial">Industrial</option>
+					<option value="punk" selected="selected">Punk</option>
+					<option value="hardcore">Hardcore</option>
+					<option value="ska">Ska</option>
+					<option value="straight-edge">Straight Edge</option>
+				</select>
+			</div>
+		
+			<div class="examples">
+				<label class="examples">Example of HTML select with multiple (causes layering issues in IE)</label>
+				<select id="basicmultiple" name="basicmultiple" title="Super Hereos">
+					<option value="spiderman">Spiderman</option>
+					<option value="superman">Superman</option>
+
+					<option value="batman" selected="selected">Batman</option>
+					<option value="wolverine" selected="selected">Wolverine</option>
+					<option value="aquaman">Aquaman</option>
+					<option value="captain_america">Captain America</option>
+					<option value="hulk_grey">Hulk (Grey)</option>
+				</select>
+			</div>
+            
+		
+			<div class="examples">
+				<label class="examples">Second Example of jQuery MultiSelect (with width options)</label>
+                    <select id="methods" name="methods" title="Four" multiple="multiple" class="arc90_multiselect fieldwidth-20em valuewidth-600px">
+					<option value="flex">Flex</option>
+					<option value="ajax" selected="selected">Ajax</option>
+					<option value="iframes">iFrames</option>
+				</select>
+				<div><strong></strong></div>
+			</div>        
+			<input type="submit">
+		</form>
+		
+		<h6>&copy; <a href="http://arc90.com/">arc90</a>, inc. <em>|</em> <a href="">blog</a> <a href="http://feeds.feedburner.com/arc90blog"><img src="http://arc90.com/_img/ft-feedicon.gif" alt="Blog feed icon" /></a> <em>|</em> <a href="">lab</a> <a href="http://feeds.feedburner.com/arc90lab"><img src="http://arc90.com/_img/ft-feedicon.gif" alt="Lab feed icon" /></a> <em>|</em> <a href="http://arc90.com/contact.php">contact</a></h6>
+	</body>
+</html>

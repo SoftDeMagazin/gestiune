@@ -1,0 +1,75 @@
+/* CSS Document */
+
+body
+{
+margin:0px 0px 0px 0px;
+}	
+
+#plan
+{
+width:1020px;
+height:650px;
+background-color: #FAFAFA;
+border:1px solid #000;
+}
+
+#head
+{
+width:1020px;
+height:50px;
+background-color: #006699;
+border:1px solid #000;
+}
+#bottom
+{
+width:1020px;
+height:50px;
+background-color:#33CCFF;
+border:1px solid #000;
+}
+
+#obiecte
+{
+width:1020px;
+height:754px;
+border:1px solid;
+position: absolute;
+z-index:2;
+top: 0px;
+left: 0px; 
+}
+
+.masa
+{
+width:97px;
+height:100px;
+position: absolute;
+border: 1px solid #000;
+background-color:#999999;
+}
+
+.masa-nume
+{
+font-weight:bold;
+background-color:#0099FF;
+color:#333333;
+text-align:center;
+}
+
+.masa-ospatar
+{
+font-weight:bold;
+background-color:#00FF66;
+color:#333333;
+text-align:center;
+}
+
+.masa-poza
+{
+width:97px;
+height:62px;
+margin:0px auto;
+background-image:url(../files/mese/masa.jpg);
+background-repeat:no-repeat;
+background-position:center;
+}

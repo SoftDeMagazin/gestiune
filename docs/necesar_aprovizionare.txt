@@ -1,0 +1,54 @@
+NECESAR APROVIZIONARE
+
+*************************************
+* 
+* 1. INTERFATA
+*
+*************************************
+
+Locatie: Stocuri -> Necesar aprovizionare
+Continut: 3 tab-uri
+1.1 lista
+1.2 adaugare/editare
+1.3 vizualizare necesar aprovizionare
+
+
+1.1 Tab-ul contine o lista de elemente "necesar de aprovizionare", cu coloanele: 
+- gestiune, utilizator, numar_doc, data, realizat (dc s-au cumparat componentele)
+Filtre: gestiune, utilizator, data si bifa de realizat
+
+1.2 
+in partea stanga, un input text si o lista de cautare produse, in care incarcam doar produse de tip reteta.
+Selectezi produsul si bagi cantitatea.
+Se adauga intr-un prim grid reteta.
+in partea dreapta, un grid, in care incarcam materiile prime necesare acestor retete. 
+in grif afisam: produs, cantitate stoc, cantitate necesare, dif de cantitate ce treb achizitionata.
+Daca o materie prima este necesara in 2 retete, se modifica pozitia din grid de 2 ori. Adica se incrementeaza cant necesara.
+
+1.3
+Exista un buton listeaza, pe lista de necesar aprovizionare, care printeaza un astfel de document cu toata elementele componente.
+	
+************************************
+* 
+* 2. SQL
+*
+************************************
+
+CREATE TABLE  `pitosgreen`.`necesar_aprovizionare` (
+  `id` mediumint(8) NOT NULL auto_increment,
+  `gestiune_id` mediumint(8) NOT NULL,
+  `utilizator_id` mediumint(8) NOT NULL,
+  `numar_doc` mediumint(8) NOT NULL,
+  `data` date NOT NULL,
+  `realizat` smallint(6) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+CREATE TABLE  `pitosgreen`.`necesar_aprovizionare_continut` (
+  `id` mediumint(8) NOT NULL auto_increment,
+  `doc_id` mediumint(8) NOT NULL,
+  `produs_id` mediumint(8) NOT NULL,
+  `cantitate_necesara` float NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

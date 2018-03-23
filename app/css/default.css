@@ -1,0 +1,83 @@
+			/*demo page css*/
+body{ font-size: 1.3em; font: 75.5% "Trebuchet MS", sans-serif;
+margin:0px 0px 0px;
+}
+
+#left {
+width:82%;
+height: 800px;
+
+float: left;
+}
+
+#left-head {
+height: 30px;
+background-color: #000000;
+line-height: 30px;
+color:#FFFFFF;
+font-weight:bold;
+font-size:18px;
+padding-left: 20px;
+}
+
+#right {
+width: 18%;
+height: 700px;
+float:right;
+
+
+}
+
+#meniu {
+}
+
+#meniu ul {
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+}
+
+.tab {
+	overflow:auto;
+	overflow-x:hidden;
+	height: 700px;
+}
+
+.menu-item {
+	height:  450px;
+}
+
+.rowhead
+{
+background-color:#666666;
+text-align:center;
+font-weight:bold;
+}
+.rowodd
+{
+background-color:#FFFFFF;
+}
+.roweven
+{
+background-color:#CCCCCC;
+}
+.rowhover
+{
+background-color: #6699FF;
+}
+.rowclick
+{
+background-color: #00FF33;
+}
+
+.error {
+ color:#FF0000;
+}
+
+fieldset {
+padding: 4px 4px 4px 4px; 
+}
+
+form {
+margin:0;
+padding:0px 0px 0px 0px;
+}

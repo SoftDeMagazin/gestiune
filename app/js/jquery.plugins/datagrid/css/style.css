@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+.datagrid-container {
+	overflow:scroll;
+	overflow-x:hidden;
+	padding: 0px 0px 0px 0px;
+	border:1px solid #000;
+}
+
+.datagrid-selected-cell {
+	
+}
+.datagrid-selected-row {
+	background-color: #666666;
+}
+
+.datagrid-hover-row {
+	background-color: #009900;
+}
+
+.datagrid-input-field {
+	border: 2px solid #000;
+}
+
+.datagrid-input {
+	width:50%;
+	float:left;
+}
+
+.datagrid-pager {
+	width:50%;
+	float:left;
+}
