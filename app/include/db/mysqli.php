@@ -123,7 +123,7 @@ class MySQL
 		{
 			$result = $sql;
 		}
-		$array = mysqli_fetch_array($result, MYSQL_ASSOC);
+		$array = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		mysqli_free_result($result);
 		return $array;
 	}
@@ -136,11 +136,11 @@ class MySQL
 			$result = $sql;
 		}
 		if(function_exists("mysqli_fetch_all")) {
-			$array = mysqli_fetch_all($result, MYSQL_ASSOC);
+			$array = mysqli_fetch_all($result, MYSQLI_ASSOC);
 		}
 		else {
 			$array = array();
-			while($ar = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+			while($ar = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				$array[] = $ar;
 			}
 		}	
@@ -155,11 +155,11 @@ class MySQL
 			$result = $sql;
 		}
 		if(function_exists("mysqli_fetch_all")) {
-			$array = mysqli_fetch_all($result, MYSQL_ASSOC);
+			$array = mysqli_fetch_all($result, MYSQLI_ASSOC);
 		}
 		else {
 			$array = array();
-			while($ar = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+			while($ar = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				$array[] = $ar;
 			}
 		}	
@@ -176,11 +176,11 @@ class MySQL
 		}
 		$array = NULL;
 		if(function_exists("mysqli_fetch_all")) {
-			$array = mysqli_fetch_all($result, MYSQL_NUM);
+			$array = mysqli_fetch_all($result, MYSQLI_NUM);
 		}
 		else {
 			$array = array();
-			while($ar = mysqli_fetch_array($result, MYSQL_NUM)) {
+			while($ar = mysqli_fetch_array($result, MYSQLI_NUM)) {
 				$array[] = $ar;
 			}
 		}	
@@ -194,7 +194,7 @@ class MySQL
 			if(mysqli_next_result($this -> Link)) 
 			{ 
 			$result = mysqli_use_result($this -> Link); 
-			mysql_free_result($result); 
+			mysqli_free_result($result); 
 			} 
 		} 
 	} 
