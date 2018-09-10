@@ -80,5 +80,69 @@ Clasa DataSource implementează interfețele:
 
 Folosind metodele magice _get() si _set() clasa permite accesul la coloanele returnate
 
+## Model
+
+Clasa Model extinde clasa DataSource. Implementează funcțiile pentru accesul la tabelele din baza de date creare, inserare, update, ștergere cunoscute si ca operații CRUD (create, read, update, delete).
+
+Proprietățile clasei:
+
+*	$tbl – numele tabelei
+*	$key – primary key-ul tabelei
+*	$_tblColumns – coloanele tabelului
+*	$_relations – relatiile de legatura cu celelalte tabele (one-to-one, one-to-many)
+*	$_validator – validarile de date pe coloane
+*	$db – connectorul la baza de date
+
+Operații pe tabele:
+
+*	insert()
+*	update()
+*	save()
+*	delete()
+
+Metode pentru interogare:
+
+*	fromId($id) – returneaza randul cu primary key –ul $id
+*	fromString($str) – returneaza randurile ce respecta conditiile sql din $str
+*	fromArrayOfId($array) – returneaza randurile ale caror id-uri se regasesc in vectorul $array
+*	find($key, $value) – returneaza randul e ce are valoarea $value pe coloana $key
+
+Metode pentru generarea automată a formularelor:
+
+*	frm($options) – genereaza formularul html
+*	frmButton($value, $options) – genereaza butonul submit
+*	frmButtonScript($value, $options) – genereaza butonul submit cu apelare din JavaScript
+*	frmContent($form) - returneaza continutul formularului
+*	frmDefault($form, $frmOptions) 
+*	frmInnerHtml($innerHtml, $frmOptions) – seteaza continutul html al formularului
+*	frmEnd()
+
+Metode pentru validare
+
+* validate(&$objResponse) – parcurge instructiunile de validare din $_validator si returneaza true daca nu a fost nici o eroare sau o lista cu mesajele de eroare asociate fiecarui camp invalid
+
+```php
+
+  var $_validator = array(
+		"pret_val"=>array(array("numeric", "Pretul trebuie sa fie numeric")), 
+		"denumire"=>array(array("required", "Introduceti denumire"), 
+		array("unique", "Denumire existenta")), 
+	);
+
+
+```
+
+## Proc
+
+Clasa Proc extinde clasa DataSource. Permite apelarea procedurilor stocate din baza de date.
+
+```php
+class GetTotalIncasariTerti extends Proc {
+	var $proc_name="getTotalIncasariTerti";
+}
+$total = new GetTotalIncasariTerti($gestiune_id, $tert_id);
+```
+
+
 
 
