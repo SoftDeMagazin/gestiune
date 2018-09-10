@@ -143,6 +143,253 @@ class GetTotalIncasariTerti extends Proc {
 $total = new GetTotalIncasariTerti($gestiune_id, $tert_id);
 ```
 
+## MySQL
+
+Clasa MySQL realizează conexiunea cu baza de date. Este folosita de clasele Model și Proc.
+
+Proprietățile clasei:
+
+* $Link – resursa de identificare a conexiunii returnata de funcția mysqli_connect
+* $Server – ip-ul serverului
+* $User – utilizator
+* $Pass – parola
+* $Db – baza de date
+
+Metodele clasei:
+
+* __construct() – execută conectarea
+* __destruct() – eliberarea resurselor folosite
+* connect()
+* query($sql) – executa un query, returnează un result set al funcției mysqli_query()
+* insertRow($sql) – inserează un rând si returneaza id-ul randului
+* numRows($sql) – returnează numărul de rânduri ale query-ului
+* tableColumns()
+* getRow($sql) – returnează array asociativ cu date pentru un query ce returnează un singur rand
+* getRows($sql) – returnează array asociativ cu date pentru un query ce returnează mai multe randuri
+* callProc($sql) – apelează o procedura
+* getRowsNum – returnează array numeric cu datele pentru un query ce returnează mai multe randuri
+* cleanConnection()
+* insertArray($array, $table, $id) – parcurge coloanele vectorului si returnează query-ul pentru inserarea datelor
+* unsertArray($array, $table, $id) – parcurge coloanele vectorului si returnează query-ul pentru update-ul datelor
+
+Exemplu
+
+```php
+/* 
+ modelele reprezinta clasele care fac legatura cu baza de date 
+ 
+ se vor pune in app/include/models/
+ 
+ trebuie sa se respecte urmatoarea conventie de nume:
+ 
+ daca tabela se numeste produse
+ 
+ modelul se  va numi Produse
+ 
+si va fi scris in fiserul produse.php
+
+- daca tabela se numeste categorii_produse
+modelul se va numi CategoriiProduse
+si va fi scris in fiserul categorii_produse.php
+ 
+ */
+ //clasa Produse extinde clasa Model
+ /*
+  * tabela produse contine coloanele produs_id (autoincrement), denumire, categorie_id
+  */
+ class Produse extends Model {
+ 	
+	//numele tabelei
+	var $tbl = "produse";
+	
+	//in aceasta proprietate se pot definii relatii intre tabele
+	/*
+	 * se defineste un array asociativ
+	 * 
+	 * 
+	 */
+	var $_relations = array(
+		"categorie" => array(
+			"type" => "one", //tipul de ralatie one sau many
+			"model" => "CategoriiProduse", //clasa de relatie
+			"key" => "categorie_id", //coloana de legatura
+			"value" =>  "denumire", //coloana din categorii_produse pe care sa o ia ca valoare
+		)
+	);
+	
+	// aici se poate defini formularul care se va genera automa
+	var $_defaultForm = array(
+		//va genera un input:text cu id denumire si name denumire
+		"denumire" => array(
+			/*
+			 * text -> textfield
+			 * textarea -> textarea
+			 * select -> un select box (trebuie definita options care va fi array asociativ de valori pentru select value => text
+			 * 							sau un query sql care returneaza 2 coloane ex: select categorie_id, denumire from categorii
+			 *  hidden -> un input hidden
+			 */
+			"type" => "text", 
+			"label" => "Denumire Produs",
+			/*
+			 * se pot defini proprietati html
+			 */
+			"attributes" => array("style" => "color:red;font-size:20px", "onClick" => "this.value='';")
+		),
+		/*
+		 * pentru ca am definit in _relations relatia categorie
+		 * aceasta afiseaza un selectbox cu categoriile din baza de date
+		 */
+		"categorie" => array(
+			"label" => "Selectati Categorie",
+		),
+	);
+ }
+ 
+ 
+ 
+ /*
+  * tabela categorii_produse contine coloanele categorie_id (autoincrement), denumire 
+  */
+ class CategoriiProduse extends Model {
+ 	var $tbl = "categorii_produse";
+ 	var $_relations = array(
+		"produse" => array(
+			"type" => "many", //tipul de ralatie one sau many
+			"model" => "Produse", //clasa de relatie
+			"key" => "categorie_id", //coloana de legatura
+		)
+	);
+ }
+ 
+ /*
+  * exemple apelare constructor clasa
+  */
+ 
+ /*
+  * 1.daca pun un int va intergoa baza de date cu: SELECT * FROM produse WHERE produs_id = 1
+  */
+ $produs = new Produse(1);
+ 
+ /*
+  * permite accesarea coloanelor din tabela astfel:
+  * 
+  */
+
+ echo $produs -> denumire;  //afiseaza denumirea
+
+ echo $produs -> id;  //afiseaza id-ul similar cu $produs -> produs_id
+
+echo $produs -> categorie -> denumire; // pentru ca am definit relatia in $_relation va interoga automat categoria din care face parte
 
 
+/*
+ * 2.daca pun un string va executa un query
+ */
+ 
+ $produse = new Produse("where categorie_id = '1'"); // va executa SELECT * FROM produse where categorie_id = 1
+ 
+ 
+ echo $produse -> denumire; //ptimul produs returnat
+ echo $produse[1] -> denumire; // al doilea produs returnat, etc
+ 
+ /*
+  * se poate itera cu foreach clasa:
+  */
+ foreach($produse as $produs) {
+ 	echo $produs -> denumire;
+ }
+ 
+ /*
+  * se afla numarul de randuri returnate cu count()
+  */
+$nr_r = count($produse);
+/*
+ * se poate parcurge cu for
+ */
+for($i = 1; $i < $nr_r; $i++) {
+	echo $produse[$i] -> denumire; // aceata accesare va fi mai lenta cu date multe
+	//recomand:
+	$produse -> fromDataSource($i);
+	echo $produse -> denumire;
+}
 
+/*
+ * pentru a afisa formlarul definit in _defalutForm
+ */
+ echo $produs -> frmDefault();
+ //afiseaza butonul de submit
+ echo $produs -> frmButtonScript("Trimite");
+ 
+ /*
+  * 3. apelare constructor cu array
+  */
+ $array = array("denumire" => "Cola", "categorie_id" => "1");
+ $produs = new Produse($array);
+ 
+ $produs -> denumire; // Cola
+ $produs -> cagegorie_id; // 1
+ $produs -> save(); // daca produs_id = 0 face insert, daca produs_id != 0 face update
+ 
+ /*
+  * 4. apelare constuctor gol
+  */
+ 
+ $produs = new Produse();
+ $produs -> denumire = "Fanta";
+ $produs -> save(); // va insera Fanta
+
+```
+
+## Html
+
+Clasa Html permite generarea de cod html. Metodele clasei se pot apela static sau sunt folosite de clasele Form, Dialog, DataGrid, Table, TableCell, TableRow. Metodele clasei Html reproduc tag-urile uzuale din limbajul HTML. 
+
+## Form
+
+Clasa Form permite generarea automata a formularelor de introducere a datelor. Extinde clasa Html. Clasa Form este folosita de clasa Model pentru a genera formularele de introducere a datelor conform structurii tabelei. 
+
+## DataGrid (Table, TableCell, TableRow)
+
+Folosind cele trei clasa Table, TableCell si TableRow clasa DataGrid permite generarea de tabele HTM.
+
+Exemplu:
+```php
+require_once("cfg.php");
+/*
+ * clasa DataGrid permite cu usurinta crearea de tabele
+ */
+ $proprietati_tag_table = array("width" => "100%", "border" => "1");
+$dg = new DataGrid($proprietati_tag_table);
+
+/*
+ * antet tabel
+ */
+$dg -> addHeadColumn("Denumire");
+$dg -> addHeadColumn("Categorie", array("style" => "color:red"));
+
+$produse = new Produse("where 1 limit 0, 30");
+
+foreach($produse as $produs) {
+	$dg -> addColumn($produs -> denumire);
+	$dg -> addColumn($produs -> categorie -> denumire, array("align" => "right"));
+	//trec la urmatorul rand
+	$dg -> index();
+} 
+
+//afisez dg-ul
+echo $dg -> getDataGrid();
+```
+Rezultat:
+
+```html
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Denumire</th>
+    <th scope="col">Categorie</th>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+```
