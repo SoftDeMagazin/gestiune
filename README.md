@@ -1,6 +1,12 @@
+# Despre
+
+Aplicație pentru gestiune și managementul stocurilor realizată ca proiect în intervalul 2008-2009 de către [Eduard Budacu](http://eduard.budacu.ro/) și publicată ca lucrare de licență în 2010. Proiectul a fost realizat în cadrul companiei Pit Software și am primit acceptul companiei de a publica codul sursă.
+
+[Pit Software](http://pitsoft.ro/) este o companie dezvoltatoare de soft de gestiune pentru restaurante, soft de marcaj, soft de gestiune hoteliera, soft de ticketing pentru stadioane si cinematografe. Pe langa acestea dezvoltă si aplicatii customizate la cererea clientilor.
+
 # Definirea problemei
 
-Se dorește construirea unei aplicații care să permită gestionarea stocurilor, al partenerilor și situațiilor financiare pentru o societate comercială sau un grup de societăți care își desfășoară activitatea in mai multe puncte de lucru. Aplicația trebuie sa permită întocmirea actelor necesare activității de gestiune (Note de Intrare Recepție și Constatare Diferențe, Note de Transfer, Avize de Expediție si Însoțire Marfă, Facturi Fiscale, Facturi Proforma, Fișa de Magazie, Bonuri Consum etc.),  rapoarte pe fiecare punct de lucru sau rapoarte centralizate, evidenta stocurilor si a mișcărilor de stocuri, rapoarte financiare (plăti si încasări), export de date pentru contabilitate. 
+Se dorește construirea unei aplicații care să permită gestionarea stocurilor, a partenerilor și situațiilor financiare pentru o societate comercială sau un grup de societăți care își desfășoară activitatea in mai multe puncte de lucru. Aplicația trebuie sa permită întocmirea actelor necesare activității de gestiune (Note de Intrare Recepție și Constatare Diferențe, Note de Transfer, Avize de Expediție si Însoțire Marfă, Facturi Fiscale, Facturi Proforma, Fișa de Magazie, Bonuri Consum etc.),  rapoarte pe fiecare punct de lucru sau rapoarte centralizate, evidenta stocurilor si a mișcărilor de stocuri, rapoarte financiare (plăti si încasări), export de date pentru contabilitate. 
 
 Aplicația se va implementa pentru un lanț de cafenele din Romania, printre cele mai mari din Estul Europei. Cele trei societăți ale grupului își desfășoară activitatea in 50 de cafenele, un restaurant, un club și o terasa cu piscina. Nevoia de a cunoaște situația vânzărilor și situației stocului in orice moment va fi rezolvată prin implementarea unei soluții software web.
 
