@@ -393,3 +393,178 @@ Rezultat:
   </tr>
 </table>
 ```
+
+# Framework-uri externe
+
+Pentru dezvoltarea aplicației s-au folosit și o serie de framework-uri open source pentru operații cum ar fi generare de fișiere pdf, fișiere excel, coduri de bare, comunicare SOAP. În cele ce urmează vor fi prezentate câteva din cele mai importante.
+
+## xAJAX
+
+xAJAX este un framework ce permite definirea de funcții PHP ce pot fi apelate din JavaScript asincron. Folosirea implică crearea unui fișier server.php in care sunt definite funcțiile ce trebuie să returneze un obiect de tip xajaxReponse, un fișier common.php în care sunt înregistrate funcțiile. Rolul framework-ului este de a converti funcțiile PHP în funcții JavaScript urmând să fie apelate prin xajax_numeFunctie(parametrii).
+
+server.php
+
+```php
+<?php
+require_once("common.php");
+$xajax -> processRequest();
+/*
+ * in server definesc functiile in php care trebuie sa returneze in 
+ */
+function test() {
+	//trebuie sa generezi si sa returnezi un $objResponse
+	
+	$objResponse = new xajaxResponse();
+	$objResponse -> assign("div_id", "innerHTML", "hello");
+	return $objResponse;
+}
+
+function helloWorld($nume) {
+	//
+	
+	$objResponse = new xajaxResponse();
+	
+	$objResponse -> alert($nume);
+	
+	//va copia ce returneaza test() in actualul objResponse
+	copyResponse($objResponse, test());
+	return $objResponse;
+}
+?>
+```
+
+common.php
+```php
+<?php
+require_once("cfg.php");
+
+$xajax = new xajax("server.php");
+//definesc functiile
+$xajax -> registerFunction("test");
+
+$xajax -> registerFunction("helloWorld");
+?>
+```
+
+## NuSOAP
+
+SOAP este un protocol lightweight, XML-based pentru schimb de informații intr-un sistem distribuit, decentralizat. Este o varianta a RPC (Remote Procedure Call). 
+
+Protocolul constă din trei parți:
+
+* Un envelope (infăsurator) care definește ce conține mesajul si cum trebuie prelucrat
+* Un set de reguli de codificare care exprima instanțe de tipuri de date definite de aplicație.
+* Convenții pentru reprezentarea apelurilor de metode remote si răspunsurile la acestea
+
+SOAP teoretic poate fi folosit in combinație cu o gama larga de protocoale, dar singurele reguli descrise in specificații sunt cum se folosește protocolul in combinatie cu HTTP si HTTP Extension Framework. SOAP folosește protocolul HTTP, conexiunile HTTP, majoritatea companiilor au serverele Web configurate pe portul standard 80 pentru conexiunile HTTP, deci protocolul poate sa fie folosit fără schimbări complexe in firewall-urile rețelelor, schimbări care pentru multe alte protocoale ar fi necesare.
+Folosind tehnologia SOAP aplicația de gestiune poate comunica cu alte aplicații chiar scrise in alt limbaj de programare. De exemplu sunt definite un set de funcții ce permit comunicarea cu aplicația PitosPOS dezvoltată in C# ce permite transferul nomenclatorului de produse, categorii și preluarea automată a vânzărilor.
+
+Exemplu înregistrare obiect de tip Produs – vector de produse
+
+```php
+// ---------- Produs ---------------------------------
+
+$server->wsdl->addComplexType(
+    'Produs',
+    'complexType',
+    'struct',
+    'all',
+    '',
+    array(
+        'produs_id' => array('name'=>'produs_id','type'=>'xsd:int'),
+		'categorie_id' => array('name'=>'categorie_id','type'=>'xsd:int'),
+		'denumire_categorie' => array('name'=>'denumire_categorie','type'=>'xsd:string'),
+		'denumire' => array('name'=>'denumire','type'=>'xsd:string'),
+		'pret_ron' => array('name'=>'pret_ron','type'=>'xsd:float'),
+		'pret_val' => array('name'=>'pret_val','type'=>'xsd:float'),
+    )
+);
+// ---------- Produs[] --------------------------------
+
+$server->wsdl->addComplexType(
+    'ProdusArray',
+    'complexType',
+    'array',
+    '',
+    'SOAP-ENC:Array',
+    array(),
+    array(
+        array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'tns:Produs[]')
+    ),
+    'tns:Produs'
+);
+```
+
+## Barcode
+
+BarCode conține un set de clase pentru generarea de coduri de bare. Se pot genera coduri de bare Codabar, Code11, Code39, Code93, Code128, EAN-8, EAN-13, ISBN, Interleaved 2 of 5, Standard 2 of 5, MSI Plessey, UPC-A, UPC-E, UPC Extension 2, UPC Extension 5 and PostNet . Clasele generează fișiere png, gif sau jpg.
+
+## PHPExcel
+
+PHPExcel contine un set de clase pentru citirea si scrierea documentelor Excel. 
+
+```php
+<?php
+$objReader = PHPExcel_IOFactory::createReader('Excel5');
+
+$objPHPExcel = $objReader->load("xls/nir.xls");
+$objPHPExcel->setActiveSheetIndex(0);
+$objPHPExcel->getActiveSheet()->setCellValue('C6', $furnizor -> obj -> nume);
+$objPHPExcel->getActiveSheet()->setCellValue('C7', $this -> numar_factura);
+
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+$objWriter -> save("temp/".$time.".xls");
+?>
+```
+
+## tcPDF
+
+Libraria tcPDF conține un set de clase pentru generarea de documente in format PDF (Portable Document Format).
+
+## jQuery
+
+jQuery este o platformă de dezvoltare JavaScript, concepută pentru a ușura și îmbunătăți procese precum traversarea arborelui DOM în HTML, managementul inter-browser al evenimentelor, animaţii şi cereri tip AJAX. jQuery a fost gândit să fie cât mai mic posibil, disponibil în toate versiunile de browsere importante existente, şi să respecte filosofia "Unobtrusive JavaScript". Librăria a fost lansată in 2006 de către John Resig.
+
+jQuery se poate folosi pentru a rezolva următoarele probleme specifice programării web:
+
+* selecții de elemente în arborele DOM folosind propriul motor de selecții open source Sizzle, un proiect născut din jQuery
+* parcurgere și modificarea arborelui DOM (incluzând suport pentru selectori CSS 3 şi XPath simpli)
+* înregistrarea și modificarea evenimentelor din browser
+* manipularea elementelor CSS
+* efecte și animații
+* cereri tip AJAX
+* extensii
+* utilități - versiunea browser-ului, funcția each.
+
+Exemplu
+
+```js
+//segventa urmatoare de cod se activeaza la incarcarea pagini si are rolul de
+//a genera meniul
+//a initializa arajarea in pagina 
+//si initializarea componentelor (calendar, multiSelect, tab)
+$(document).ready(
+	function() {
+		$('#meniu').accordion({header: 'h3', animated: false});
+		$('#meniu').accordion('activate', <?=RAPOARTE_FINANCIARE?>);
+		$('#tabs').tabs();
+		$('.calendar').datepicker({ buttonImageOnly: true, hideIfNoPrevNext: true, duration: '', showOn: 'button', buttonImage:'/app/files/img/office-calendar.png' });
+		$('#categorie_id').multiSelect({selectAllText: 'Selecteaza tot!', oneOrMoreSelected: '*'}, function(el) {
+					
+				});
+		$('#tip_produs').multiSelect({selectAllText: 'Selecteaza tot!', oneOrMoreSelected: '*'}, function(el) {
+					
+				});		
+		$('#societate_id').multiSelect({selectAllText: 'Selecteaza tot!', oneOrMoreSelected: '*'}, function(el) {
+					xajax_loadSocietate(xajax.getFormValues('frmFiltre'));
+				});				
+		$('#gestiune_id').multiSelect({selectAllText: 'Selecteaza tot!', oneOrMoreSelected: '*'}, function(el) {
+					xajax_loadGestiune(xajax.getFormValues('frmFiltre'));
+				});			
+		$('#tert_id').multiSelect({selectAllText: 'Selecteaza tot!', oneOrMoreSelected: '*'}, function(el) {
+					
+				});			
+	}
+);
+```
+
