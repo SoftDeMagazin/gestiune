@@ -53,7 +53,7 @@ class DataSource implements Countable, IteratorAggregate, ArrayAccess{
 	}
 
 	public function fromCollection($collection) {
-		$this -> _data = $collection[0];
+		$this -> _data = isset($collection[0]) ? $collection[0] : null;
 		$this -> _dataSource = $collection;
 	}
 

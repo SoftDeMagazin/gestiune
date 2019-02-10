@@ -326,8 +326,8 @@ class Model extends DataSource
 						if(!array_key_exists("sql", $rel))
 						{
 							$key = $rel['key'];
-							$value = $rel['model_key'];
-							if(!$value) $value = $key;
+							$value = isset($rel['model_key']) ? $rel['model_key'] : $key;
+							//if(!$value) $value = $key;
 							$this -> _relationsClasses[$name] -> find($value, $this -> $key);
 							$out = clone $this -> _relationsClasses[$name];
 							return $out;

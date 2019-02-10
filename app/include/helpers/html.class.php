@@ -92,6 +92,7 @@ class Html
 	
 	public static function htmlAttributes($htmlAttributes, $insertBefore = ' ', $insertAfter = null)
 		{
+		$out = '';
 		if(!empty($htmlAttributes))
 		{
 		if(is_array($htmlAttributes))
