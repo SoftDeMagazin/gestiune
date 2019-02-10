@@ -266,6 +266,8 @@ class Model extends DataSource
 					Html::append($out, '</div>');
 				}
 				else {
+					//var_dump($f);die();
+					if(is_array($f)) {
 					switch($f['type']) {
 						case "fieldstart": {
 							Html::append($out, "<fieldset><legend>". $f['label'] ."</legend>");
@@ -276,6 +278,7 @@ class Model extends DataSource
 						default: {
 							Html::append($out, $f);
 						}break;
+					}
 					}
 				}
 			}

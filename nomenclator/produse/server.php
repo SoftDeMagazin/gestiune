@@ -14,8 +14,8 @@ function lista($frmFiltre=array(), $frmPager=array(), $action="first", $selected
 	if($frmFiltre['denumire']) {
 		$sql .= " and denumire like '%". $frmFiltre['denumire'] ."%'";
 	}
-	
-	if($frmFiltre['categorie_id']) {
+//	var_dump($frmFiltre['categorie_id']);
+	if($frmFiltre['categorie_id'] && $frmFiltre['categorie_id'][0]) {
 		$in = implode(",", $frmFiltre['categorie_id']);
 		$sql .= " and categorie_id in (". $in .")";
 	}

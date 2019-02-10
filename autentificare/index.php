@@ -85,7 +85,7 @@ function dataIsValid()
 <FORM name="login_frm"  id="login_frm" METHOD="POST" ACTION="login.php" onsubmit="return false;">
 <center>
 <div class="login" >
-	<div class="title">AUTENTIFICARE GESTIUNE</div>
+	<div class="title">AUTENTIFICARE GESTIUNE - test</div>
 	<br><br>
 	<p>
 		<label>Nume utilizator:</label><br>
