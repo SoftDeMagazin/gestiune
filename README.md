@@ -4,6 +4,12 @@ Aplicație pentru gestiune și managementul stocurilor realizată ca proiect în
 
 [Pit Software](http://pitsoft.ro/) este o companie dezvoltatoare de soft de gestiune pentru restaurante, soft de marcaj, soft de gestiune hoteliera, soft de ticketing pentru stadioane si cinematografe. Pe langa acestea dezvoltă si aplicatii customizate la cererea clientilor.
 
+![interfata gestiune](./docs/images/interfata-gestiune.png)
+
+![interfata produse](./docs/images/interfata-produse.png)
+
+![interfata configurare produse NIR](./docs/images/interfata-configurare-produse.png)
+
 # Definirea problemei
 
 Se dorește construirea unei aplicații care să permită gestionarea stocurilor, a partenerilor și situațiilor financiare pentru o societate comercială sau un grup de societăți care își desfășoară activitatea in mai multe puncte de lucru. Aplicația trebuie sa permită întocmirea actelor necesare activității de gestiune (Note de Intrare Recepție și Constatare Diferențe, Note de Transfer, Avize de Expediție si Însoțire Marfă, Facturi Fiscale, Facturi Proforma, Fișa de Magazie, Bonuri Consum etc.),  rapoarte pe fiecare punct de lucru sau rapoarte centralizate, evidenta stocurilor si a mișcărilor de stocuri, rapoarte financiare (plăti si încasări), export de date pentru contabilitate. 
