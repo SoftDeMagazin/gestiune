@@ -23,7 +23,7 @@ function menu(){
 		$out.= Html::h3(Html::link('#',$modules[$j]->parinte));
 		$out.= Html::divstart("class=\"menu-item\"");		
 		
-		while($modules[$j]->parinte == $parent){
+		while(isset($modules[$j]) && ($modules[$j]->parinte == $parent)){
 			if(isset($_SESSION['user'] -> permissions[$modules[$j] -> id])) {
 				$hasView = $_SESSION['user'] -> permissions[$modules[$j] -> id] -> getView();
 			}
@@ -38,7 +38,7 @@ function menu(){
 			}	
 			$j+=1;
 		}
-		$parent = $modules[$j]->parinte;
+		$parent = isset($modules[$j]) ? $modules[$j]->parinte : null;
 		
 		$out.=Html::ul($menuItems);
 		$out.=Html::divend();

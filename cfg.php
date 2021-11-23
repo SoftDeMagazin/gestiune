@@ -1,6 +1,6 @@
 <?php 
 require_once (DOC_ROOT."common/user_profile.php");
-error_reporting(0);
+error_reporting(E_ALL);
 session_start();
 header("Cache-control: no-cache");
 

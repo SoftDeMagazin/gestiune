@@ -256,13 +256,13 @@ class Model extends DataSource
 			foreach($frm as $key => $f) {
 				if(array_key_exists($key,$this -> _data) || array_key_exists($key, $this -> _relations)) {
 
-					if($f['label']) {
+					if(isset($f['label']) && $f['label']) {
 						Html::append($out, Html::label($f['label'], "",array("id" => 'lbl_frm_'. $key .'')));
 						Html::append($out, '<br/>');
 					}
 					Html::append($out, '<div id="div_frm_'. $key .'">');
 					Html::append($out, $this -> $key($f));
-					if($f['type'] != 'hidden') { Html::append($out, '<span id="err_frm_'. $key .'" class="error"></span>'); }
+					if(isset($f['type']) && $f['type'] != 'hidden') { Html::append($out, '<span id="err_frm_'. $key .'" class="error"></span>'); }
 					Html::append($out, '</div>');
 				}
 				else {
@@ -347,7 +347,7 @@ class Model extends DataSource
 						if(!array_key_exists("sql", $rel)) {
 							$clsname = $rel['model'];
 							$key = $rel['key'];
-							$cls = new $clsname("where $key = '". $this -> $key ."' ". $this -> _relationsQuery[$name] ."");
+							$cls = new $clsname("where $key = '". $this -> $key ."' ". (isset($this -> _relationsQuery[$name]) ? $this -> _relationsQuery[$name] : '') ."");
 							return $cls;
 						}
 						else {
@@ -410,7 +410,7 @@ class Model extends DataSource
 			if($this -> $method) {
 				$options['value'] = $this -> $method;
 			} else {
-				$options['value'] = ($this -> id) ? $this -> $method : $options['value'];
+				$options['value'] = ($this -> id) ? $this -> $method : (isset($options['value']) ? $options['value'] : null);
 			}
  			/*
 			$options['value'] = ($this -> id) ? $this -> $method : $options['value'];
@@ -423,15 +423,15 @@ class Model extends DataSource
 		if(array_key_exists($method, $this -> _relations)) {
 			$rel = $this -> _relations[$method];
 			$cls = $this -> _relationsClasses[$method];
-			if(!$rel['conditions']) {
-				$cls -> fromString("where 1 order by ". $rel['value'] ." asc");
-			}
-			else {
+			if(isset($rel['conditions']) && $rel['conditions']) {
 				$cls -> fromString($rel['conditions']);
 			}
-			
-			if($rel['model_key']) $key = $rel['model_key'];
-			else $key = $rel['key'];
+			else {
+				
+				$cls -> fromString("where 1 order by ". $rel['value'] ." asc");
+			}
+
+			$key = isset($rel['model_key']) ? $rel['model_key'] : $rel['key'];
 			
 			$opt = $cls -> getCollectionForm(array($key, $rel['value']));
 			if(is_array($arguments[0])) {
@@ -443,8 +443,8 @@ class Model extends DataSource
 			}
 			
 			
-			$atrs = $arguments['attributes'];
-			if($atrs['multiple']) {
+			$atrs = isset($arguments['attributes']) ? $arguments['attributes'] : array() ;
+			if(isset($atrs['multiple'])) {
 					$options['type'] = "multiselect";					
 				}
 			else {

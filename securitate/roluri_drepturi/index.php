@@ -49,7 +49,7 @@ echo $drepturi -> select("xajax_lista(xajax.getFormValues('frmFiltre'), xajax.ge
 	?></div>
 
 <?php
-	session_start();
+
 	echo toolbar('rol_drept_id',$_SESSION['user']->permissions['23']);
 	?>
 

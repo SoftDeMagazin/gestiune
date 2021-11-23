@@ -139,7 +139,7 @@ class xajax
 			for calls back to the server.  If empty, xajax fills in the current
 			URI that initiated this request.
 	*/
-	function xajax($sRequestURI='')
+	function __construct($sRequestURI='')
 	{
 		$this->bErrorHandler = false;
 		$this->aProcessingEvents = array();

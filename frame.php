@@ -1,5 +1,4 @@
 <?php
-define('DOC_ROOT', '');
 require_once("common.php");
 setcookie("gestiune_id", $_SESSION['user'] -> gestiune_id);
 setcookie("uid", $_SESSION['user'] -> user_id);

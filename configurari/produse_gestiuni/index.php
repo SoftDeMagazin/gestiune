@@ -115,7 +115,7 @@ $xajax->printJavascript(DOC_ROOT.'app/thirdparty/xajax/');
                         ?>
                     </div>
                     <?php 
-                    session_start();
+                    
                     echo toolbar('produs_gestiune_id', $_SESSION['user']->permissions['30']);
                     ?>
                     <div id="grid" style="height:500px; overflow:scroll; overflow-x:hidden; clear:both;">

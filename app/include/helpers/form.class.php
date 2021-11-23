@@ -55,7 +55,8 @@ class FormField extends Html
 				$options['selected'] = $options['value'];
 				parent::append($out, parent::selectstart($name, $options['attributes']));
 					
-				if($options['default']) {
+				if(isset($options['default']) && $options['default']) {
+					$selected = null;
 					if($options['selected']==$options['default_value']) {
 						$selected = array("selected");
 					}

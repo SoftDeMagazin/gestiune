@@ -45,7 +45,6 @@ echo $roluri -> select("xajax_lista(xajax.getFormValues('frmFiltre'), xajax.getF
 	?></div>
 
 <?php
-	session_start();
 	echo toolbar('utilizator_id',$_SESSION['user']->permissions['21']);
 	?>
 

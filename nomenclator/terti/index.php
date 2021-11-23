@@ -41,7 +41,6 @@ $(document).ready(
 	?>
     </div>
 <?php
-	session_start();
 	echo toolbar('tert_id',$_SESSION['user']->permissions['5']);
 	?>
     <div id="grid" style="height:500px; overflow:scroll; overflow-x:hidden; clear:both;">

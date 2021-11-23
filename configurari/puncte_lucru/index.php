@@ -46,7 +46,7 @@ echo $soc -> select("xajax_lista(xajax.getFormValues('frmFiltre'), xajax.getForm
 	?>
     </div>
 <?php
-	session_start();
+
 	echo toolbar('punct_lucru_id',$_SESSION['user']->permissions['24']);
 	?>
     <div id="grid" style="height:500px; overflow:scroll; overflow-x:hidden; clear:both;">

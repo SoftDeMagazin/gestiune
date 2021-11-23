@@ -85,7 +85,6 @@ $(document).ready(
 	?>
     </div>
 	<?php
-	session_start();
 	echo toolbar('agent_id',$_SESSION['user']->getPermissionsByUrl($module_url));
 	?>
     <div id="grid" style="height:500px; overflow:scroll; overflow-x:hidden; clear:both;">

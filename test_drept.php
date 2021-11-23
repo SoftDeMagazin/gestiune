@@ -2,6 +2,7 @@
 $url = $_SERVER['PHP_SELF'];
 $list = explode("/",$url);
 $list[count($list) - 1] = "";
+$module_url = '';
 foreach($list as $li) {
 	if($li) $module_url .= $li."/";
 } 

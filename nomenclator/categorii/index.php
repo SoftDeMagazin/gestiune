@@ -42,7 +42,6 @@ $(document).ready(
 	?>
     </div>
 	<?php
-	session_start();
 	echo toolbar('categorie_id',$_SESSION['user']->permissions['2']);
 	?>
     <div id="grid" style="height:500px; overflow:scroll; overflow-x:hidden; clear:both;">
