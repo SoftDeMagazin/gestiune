@@ -42,7 +42,7 @@ class xajaxIncludeClientScriptPlugin extends xajaxRequestPlugin
 	var $bUseUncompressedScripts;
 	var $bDeferScriptGeneration;
 
-	function xajaxIncludeClientScriptPlugin()
+	function __construct()
 	{
 		$this->sJsURI = '';
 		$this->aJsFiles = array();

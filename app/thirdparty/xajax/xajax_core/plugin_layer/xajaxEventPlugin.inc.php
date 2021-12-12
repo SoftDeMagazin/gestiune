@@ -69,7 +69,7 @@ class xajaxEventPlugin extends xajaxRequestPlugin
 	/*
 		Function: xajaxEventPlugin
 	*/
-	function xajaxEventPlugin()
+	function __construct()
 	{
 		$this->aEvents = array();
 

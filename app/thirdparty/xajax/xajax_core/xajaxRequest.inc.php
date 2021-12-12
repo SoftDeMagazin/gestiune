@@ -88,7 +88,7 @@ class xajaxRequest
 		
 		sName - (string):  The name of this request.
 	*/
-	function xajaxRequest($sName)
+	function __construct($sName)
 	{
 		$this->aParameters = array();
 		$this->sQuoteCharacter = '"';

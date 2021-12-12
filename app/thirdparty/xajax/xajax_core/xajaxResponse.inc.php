@@ -80,7 +80,7 @@ class xajaxResponse
 		
 		Create and initialize a xajaxResponse object.
 	*/
-	function xajaxResponse()
+	function __construct()
 	{
 		$objResponseManager = xajaxResponseManager::getInstance();
 		

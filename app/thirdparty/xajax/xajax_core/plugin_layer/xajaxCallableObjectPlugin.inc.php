@@ -61,7 +61,7 @@ class xajaxCallableObjectPlugin extends xajaxRequestPlugin
 	/*
 		Function: xajaxCallableObjectPlugin
 	*/
-	function xajaxCallableObjectPlugin()
+	function __construct()
 	{
 		$this->aCallableObjects = array();
 

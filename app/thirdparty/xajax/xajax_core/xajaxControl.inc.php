@@ -63,7 +63,7 @@ class xajaxControl
 		'children' - (array):  An array of <xajaxControl> derived objects that
 			will be the children of this control.
 	*/
-	function xajaxControl($sTag, $aConfiguration=array())
+	function __construct($sTag, $aConfiguration=array())
 	{
 		$this->sTag = $sTag;
 

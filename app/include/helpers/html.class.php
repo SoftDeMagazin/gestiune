@@ -180,7 +180,7 @@ class Html
 		{
 		return sprintf(self::$tags['text'], $name, $value, self::htmlAttributes($options));
 		}	
-	public static function radio($name, $id, $value, $options = array(), $label) 
+	public static function radio($name, $id, $value, $options = array(), $label = null) 
 		{
 		return '<label>'.sprintf(self::$tags['radio'], $name, $id, $value, self::htmlAttributes($options), $label).'</label>';
 		}	

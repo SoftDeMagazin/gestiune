@@ -57,7 +57,7 @@ class xajaxPluginManager
 	/*
 		Function: xajaxPluginManager
 	*/
-	function xajaxPluginManager()
+	function __construct()
 	{
 		$this->aRequestPlugins = array();
 		$this->aResponsePlugins = array();

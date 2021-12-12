@@ -48,7 +48,7 @@ class xajaxResponseManager
 	/*
 		Function: xajaxResponseManager
 	*/
-	function xajaxResponseManager()
+	function __construct()
 	{
 		$this->objResponse = NULL;
 	}

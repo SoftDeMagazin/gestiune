@@ -10,7 +10,7 @@ class xajaxScriptPlugin extends xajaxRequestPlugin
 	
 	var $bWorking;
 	
-	function xajaxScriptPlugin()
+	function __construct()
 	{
 		$this->sRequestURI = '';
 		$this->bDeferScriptGeneration = false;
