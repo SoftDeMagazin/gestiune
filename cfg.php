@@ -109,7 +109,9 @@ if ($handle = opendir(DOC_ROOT.'app/include/print'))
     }
 }
 
-function __autoload($class_name)
+
+
+spl_autoload_register(function ($class_name)
 {
     global $modelList;
     global $viewsList;
@@ -136,5 +138,5 @@ function __autoload($class_name)
     {
         require_once (DOC_ROOT."app/include/print/".camelCaseToUnderline($class_name).".php");
     }
-}
+});
 ?>
