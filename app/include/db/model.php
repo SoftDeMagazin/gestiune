@@ -399,7 +399,7 @@ class Model extends DataSource
 	function __call($method, $arguments)
 	{
 		if(array_key_exists($method, $this -> _data)) {
-			if(is_array($arguments[0])) {
+			if(isset($arguments[0]) && is_array($arguments[0])) {
 				$options = $arguments[0];
 			}
 			else {

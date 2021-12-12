@@ -1,5 +1,4 @@
 <?php
-session_start();
 header("Cache-control: private"); // IE 6 Fix 
 require_once("common.php");
 $xajax->processRequest();

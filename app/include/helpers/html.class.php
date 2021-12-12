@@ -264,6 +264,10 @@ class Html
 	 */
 	public static function overflowDiv($innerHTML, $h="400px", $w="100%", $options = array())
 	{
+		if(!isset($options['style'])) {
+			$options['style'] = '';
+		}
+		
 		$options['style'] .= "overflow:scroll; overflow-x:hidden;width:$w;height:$h;";
 		return sprintf(self::$tags['div'], self::htmlAttributes($options), $innerHTML);
 	}
