@@ -85,7 +85,7 @@ function infoCursValutar() {
 	$val_EUR= $result['GetLatestValueResult'];	
 	$dialog -> append("1 EUR = ".$val_EUR." LEI");
 	$dialog -> addButton("Inchide");
-	$dialog -> addButton("Seteaza acest curs in gestiune", "xajax_actualizareCurs('$val_EUR');<%close%>");
+	$dialog -> addButton("Seteaza acest curs in gestiune", "xajax_actualizareCurs('$val_EUR', 'EUR');<%close%>");
 	return $dialog -> open();
 }
 ?>
