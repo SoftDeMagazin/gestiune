@@ -7,7 +7,6 @@ function login($login_frm=array()){
 	global $db;
 	$username = addslashes($db -> escape($login_frm['username']));
 	$pass = addslashes($db -> escape($login_frm['pass']));
-	$gest_id = $login_frm['gestiune_id'];
 
 	global $db;
 	$sql = "SELECT u.utilizator_id,u.user_name,u.nume,u.rol_id FROM ".

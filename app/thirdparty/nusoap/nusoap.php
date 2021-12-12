@@ -72,7 +72,8 @@ require_once('class.soap_server.php');*/
 
 // class variable emulation
 // cf. http://www.webkreator.com/php/techniques/php-static-class-variables.html
-$GLOBALS['_transient']['static']['nusoap_base']->globalDebugLevel = 9;
+if(isset($GLOBALS['_transient']['static']['nusoap_base']))
+	$GLOBALS['_transient']['static']['nusoap_base']->globalDebugLevel = 9;
 
 /**
 *
@@ -2558,7 +2559,7 @@ class soap_transport_http extends nusoap_base {
 	* @access   public
 	* @deprecated
 	*/
-	function sendHTTPS($data, $timeout=0, $response_timeout=30, $cookies) {
+	function sendHTTPS($data, $timeout=0, $response_timeout=30, $cookies = array()) {
 		return $this->send($data, $timeout, $response_timeout, $cookies);
 	}
 	
@@ -7378,7 +7379,7 @@ class nusoap_client extends nusoap_base  {
 	 */
 	function loadWSDL() {
 		$this->debug('instantiating wsdl class with doc: '.$this->wsdlFile);
-		$this->wsdl =& new wsdl('',$this->proxyhost,$this->proxyport,$this->proxyusername,$this->proxypassword,$this->timeout,$this->response_timeout,$this->curl_options,$this->use_curl);
+		$this->wsdl = new wsdl('',$this->proxyhost,$this->proxyport,$this->proxyusername,$this->proxypassword,$this->timeout,$this->response_timeout,$this->curl_options,$this->use_curl);
 		$this->wsdl->setCredentials($this->username, $this->password, $this->authtype, $this->certRequest);
 		$this->wsdl->fetchWSDL($this->wsdlFile);
 		$this->checkWSDL();
