@@ -1,8 +1,8 @@
 <?php
 require_once ("common.php");
-require_once (DOC_ROOT."app/templates/meta-head.php");
+require_once (__DIR__."/../app/templates/meta-head.php");
 
-$xajax->printJavascript(DOC_ROOT.'app/thirdparty/xajax/');
+$xajax->printJavascript('../app/thirdparty/xajax/');
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -66,7 +66,7 @@ $xajax->printJavascript(DOC_ROOT.'app/thirdparty/xajax/');
 <body>
     <div id="left">
         <div id="left-content">
-<?php require_once (DOC_ROOT.'app/templates/header.php'); ?>
+<?php require_once (__DIR__.'/../app/templates/header.php'); ?>
             <div id="tabs">
                 <ul id="tabs-meniu">
                     <li>
@@ -129,7 +129,8 @@ echo $tip -> select("xajax_lista(xajax.getFormValues('frmFiltre'), xajax.getForm
 <fieldset><legend>Produse</legend>                    
                     
 <div id="pager" class="pager" style="text-align: right;"><?php
-	include_once(DOC_ROOT."app/templates/pager.php");
+    //var_dump(__DIR__."/../app/templates/pager.php");
+	include_once(__DIR__."/../app/templates/pager.php");
 	?>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
 require_once("common.php");
-require_once(DOC_ROOT."app/templates/meta-head.php");
-$xajax->printJavascript(DOC_ROOT.'app/thirdparty/xajax/'); 
+require_once(__DIR__."/../app/templates/meta-head.php");
+$xajax->printJavascript('../app/thirdparty/xajax/');
 ?>
 
 <style>

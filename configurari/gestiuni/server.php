@@ -7,12 +7,12 @@ $xajax->processRequest();
 function lista($frmFiltre = array(), $frmPager = array(), $action = "first", $selected = 0)
 {
     $sql = "WHERE 1";
-    if ($frmFiltre['denumire'])
+    if (isset($frmFiltre['denumire']) && $frmFiltre['denumire'])
     {
         $sql .= " and denumire like '%".$frmFiltre['denumire']."%'";
     }
     
-    if ($frmFiltre['punct_lucru_id'])
+    if (isset($frmFiltre['punct_lucru_id']) && $frmFiltre['punct_lucru_id'])
     {
         $in = implode(",", $frmFiltre['punct_lucru_id']);
         $sql .= " and punct_lucru_id in (".$in.")";

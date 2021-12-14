@@ -31,7 +31,7 @@ function menu(){
 				$hasView = false;
 			}	
 			if($hasView) {
-				$menuItems.=Html::li(Html::link(DOC_ROOT.$modules[$j]->url,$modules[$j]->denumire));
+				$menuItems.=Html::li(Html::link(BASE_URL.$modules[$j]->url,$modules[$j]->denumire));
 			}
 			else {
 				$menuItems.=Html::li($modules[$j]->denumire);

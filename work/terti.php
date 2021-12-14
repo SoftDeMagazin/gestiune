@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 			$tert -> banca = $info[7];
 			$tert -> iban = $info[6];
 			$tert -> cod_tara = substr($info[3], 0, 2);
-			if(substr($info[3], 0, 2) == "RO") {
+			if(str_starts_with($info[3], "RO")) {
 				$tert -> tip = 'intern';
 				$tert -> valuta = 'LEI';
 			} else {

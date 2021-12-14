@@ -133,11 +133,11 @@ function lista_poze($filelist)
 }		
 
 function stylesheet($link) {
-	echo '<link rel="stylesheet" type="text/css" href="'.DOC_ROOT.''.$link.'" />';
+	echo '<link rel="stylesheet" type="text/css" href="'.BASE_URL.''.$link.'" />';
 }
 
 function jscript($link) {
-	echo '<script type="text/javascript" src="'.DOC_ROOT.''.$link.'"></script>';
+	echo '<script type="text/javascript" src="'.BASE_URL.''.$link.'"></script>';
 }
 
 

@@ -1,13 +1,13 @@
 <?php
 header("Cache-control: private"); // IE 6 Fix 
 require_once("common.php");
-require_once(DOC_ROOT.'app/thirdparty/nusoap/nusoap.php');
+require_once(__DIR__.'/../app/thirdparty/nusoap/nusoap.php');
 $xajax->processRequest();
 function lista($frmFiltre=array(), $frmPager=array(), $action="first", $selected=0)
 {
 	$model = new ViewProduseGestiuni();
 	$sql = " where gestiune_id = ". $_SESSION['user'] -> gestiune_id ." ";
-	if($frmFiltre['denumire']) {
+	if(isset($frmFiltre['denumire']) && $frmFiltre['denumire']) {
 		$sql .= " and denumire like '%". $frmFiltre['denumire'] ."%'";
 	}
 	

@@ -1,7 +1,8 @@
 <?php
 require_once("common.php");
-require_once(DOC_ROOT."common/user_profile.php");
+require_once(__DIR__."/../common/user_profile.php");
 $xajax->processRequest();
+
 function login($login_frm=array()){
 	$objResponse = new xajaxResponse();
 	global $db;
@@ -31,7 +32,7 @@ function login($login_frm=array()){
 	setcookie("uid", $user_profile -> user_id, time()+60*60*24*30);
 	setcookie("gestiune_id", $user_profile -> gestiune_id, time()+60*60*24*30);
 	
-	$objResponse->redirect(DOC_ROOT."frame.php");
+	$objResponse->redirect("../frame.php");
 	return $objResponse;
 }
 ?>
