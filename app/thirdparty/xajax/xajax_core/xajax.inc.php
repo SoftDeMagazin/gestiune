@@ -150,14 +150,14 @@ class xajax
 		$sLocalFolder = dirname(__FILE__);
 		$sParentFolder = dirname($sLocalFolder);
 		ob_start();
-		require $sLocalFolder . '/xajaxPluginManager.inc.php';
-		require $sLocalFolder . '/xajaxArgumentManager.inc.php';
-		require $sLocalFolder . '/xajaxResponseManager.inc.php';
-		require $sLocalFolder . '/xajaxRequest.inc.php';
-		require $sLocalFolder . '/xajaxResponse.inc.php';
+		require_once $sLocalFolder . '/xajaxPluginManager.inc.php';
+        require_once $sLocalFolder . '/xajaxArgumentManager.inc.php';
+        require_once $sLocalFolder . '/xajaxResponseManager.inc.php';
+        require_once $sLocalFolder . '/xajaxRequest.inc.php';
+        require_once $sLocalFolder . '/xajaxResponse.inc.php';
 
 		// Setup plugin manager
-		$oPluginManager =& xajaxPluginManager::getInstance();
+		$oPluginManager = xajaxPluginManager::getInstance();
 		$oPluginManager->loadPlugins(
 			// this is the list of folders where xajax will look for plugins
 			// that will be automatically included at startup.
