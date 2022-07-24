@@ -1,4 +1,4 @@
-# Despre proiect
+# Despre proiect gestiune
 
 Aplicație pentru gestiune și managementul stocurilor realizată ca proiect în intervalul 2008-2009 de către [Eduard Budacu](http://eduard.budacu.ro/) și publicată ca lucrare de licență în 2010. Proiectul a fost realizat în cadrul companiei Pit Software și am primit acceptul companiei de a publica codul sursă.
 
